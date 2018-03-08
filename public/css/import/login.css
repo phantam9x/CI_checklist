@@ -1,15 +1,15 @@
-body, html {
+#page-login {
     height: 100%;
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
 }
 
-.card-container.card {
+#page-login .card-container.card {
     max-width: 350px;
-    padding: 40px 40px;
+    padding: 25px;
 }
 
-.btn {
+#page-login .btn {
     font-weight: 700;
     height: 36px;
     -moz-user-select: none;
@@ -17,7 +17,7 @@ body, html {
     user-select: none;
     cursor: default;
 }
-.card {
+#page-login .card {
     background-color: #F7F7F7;
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
@@ -29,7 +29,7 @@ body, html {
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
-.profile-img-card {
+#page-login .profile-img-card {
     width: 96px;
     height: 96px;
     margin: 0 auto 10px;
@@ -38,14 +38,14 @@ body, html {
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
-.profile-name-card {
+#page-login .profile-name-card {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     margin: 10px 0 0;
     min-height: 1em;
 }
-.reauth-email {
+#page-login .reauth-email {
     display: block;
     color: #404040;
     line-height: 2;
@@ -59,16 +59,16 @@ body, html {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-.form-signin #inputEmail,
-.form-signin .inputPassword {
+#page-login .form-signin #inputEmail,
+#page-login .form-signin .inputPassword {
     direction: ltr;
     height: 44px;
     font-size: 16px;
 }
-.form-signin input[type=email],
-.form-signin input[type=password],
-.form-signin input[type=text],
-.form-signin button {
+#page-login .form-signin input[type=email],
+#page-login .form-signin input[type=password],
+#page-login .form-signin input[type=text],
+#page-login .form-signin button {
     width: 100%;
     display: block;
     margin-bottom: 10px;
@@ -78,7 +78,7 @@ body, html {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-.form-signin #title{
+#page-login .form-signin #title{
     font-weight: 600;
     font-size: 18px;
     text-align: center;
@@ -86,13 +86,13 @@ body, html {
     margin: 15px 0;
     color: #337ab7;
 }
-.form-signin .form-control:focus {
+#page-login .form-signin .form-control:focus {
     border-color: rgb(104, 145, 162);
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
 }
-.btn.btn-signin {
+#page-login .btn.btn-signin {
     background-color: rgb(104, 145, 162);
     padding: 0px;
     font-weight: 700;
@@ -107,16 +107,16 @@ body, html {
     -webkit-transition: all 0.218s;
     transition: all 0.218s;
 }
-.btn.btn-signin:hover,
+#page-login .btn.btn-signin:hover,
 .btn.btn-signin:active,
 .btn.btn-signin:focus {
     background: rgb(12, 97, 33);
 }
-.forgot-password {
+#page-login .forgot-password {
     color: rgb(104, 145, 162);
 }
-.forgot-password:hover,
-.forgot-password:active,
-.forgot-password:focus{
+#page-login .forgot-password:hover,
+#page-login .forgot-password:active,
+#page-login .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
