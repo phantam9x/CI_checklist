@@ -2,12 +2,12 @@
 /**
 * 
 */
-class userController extends CI_Controller {
+class UserController extends CI_Controller {
 	
 	function __construct() {
 		parent::__construct();
 		$this->load->model('userModel');
-		// dd($_SESSION);
+		$this->form_validation->set_error_delimiters('<p class="text-error help-block">', '</p>');
 	}
 
 	function info() {
@@ -21,14 +21,14 @@ class userController extends CI_Controller {
 		$config['upload_path']          = 'public/images/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 100;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
+        $config['max_width']            = 2024;
+        $config['max_height']           = 1168;
 
         $this->load->library('upload', $config);
 
         if ( ! $this->upload->do_upload('img_file')) {
-             $_SESSION['error']=$this->upload->display_errors();
-
+            $this->upload->display_errors();
+			return false;
         } else {
             $data = $this->upload->data();
             $this->userModel->updated_avatar($config['upload_path'].$data['file_name'], $my_id);
@@ -36,19 +36,24 @@ class userController extends CI_Controller {
 	}
 
 	function updated() {
+
 		$my_id = 2;
-		$this->form_validation->set_rules('fullname', 'Họ và tên','xss_clean|required|max_length[50]', [
+		$this->form_validation->set_rules('fullname', 'Họ và tên','required|max_length[50]', [
 			'required'=>'Vui lòng nhập vào tên hiển thị',
-			'max_length' => 'Tên của bạn phải nhỏ hơn 50 ký tự',
-			'xss_clean' => ''
+			'max_length' => 'Tên của bạn phải nhỏ hơn 50 ký tự'
 		]);
 		if($this->form_validation->run()) {
 			$this->userModel->updated_info([
-				'fullname'=> $this->input->post('fullname')
+				'use_fullname'=> $this->input->post('fullname')
 			], $my_id);
-			echo "<script>slert('Thay đổi thông tin thành công');</script>";
-		}
+			set_message('Thay đổi thông tin thành công','SUCCESS');
+			 // dd($_SESSION);
+		} 
 		$info_user = $this->userModel->get_user_by_id($my_id);
-		$this->load->view('layout/main',['sub_view'=>'info_user','info'=>$info_user]);
+		$this->load->view('layout/main',[
+			'sub_view'			=>'info_user',
+			'info'				=>$info_user
+		]);
+		
 	}
 }

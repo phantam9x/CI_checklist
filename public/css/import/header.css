@@ -1,5 +1,6 @@
 /*STYLE HEADER*/
-#wp-logo, #action-user { width: 200px;}
+#action-user { width: 300px;}
+#wp-logo{width: 200px}
 #wp-logo #logo{ 
     display: block; 
     padding: 21px 17px;

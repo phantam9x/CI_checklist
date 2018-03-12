@@ -1,6 +1,6 @@
 <?php 
 
-class authController extends CI_Controller
+class AuthController extends CI_Controller
 {
 	
 	function __construct()
@@ -16,7 +16,10 @@ class authController extends CI_Controller
 		$permissions = $this->config->item('permissions');
 		$redirect_url = 'http://folder.info/CI_vote_fb/login/fb';
 		$login_url = $helper->getLoginUrl($redirect_url, $permissions);
-		$this->load->view('login',['url_login_fb'=> $login_url]);		
+		$this->load->view('layout/auth',[
+			'url_login_fb'	=> $login_url,
+			'sub_view'		=> 'login'
+		]);		
 	}
 
 	function handleFormLogin() {
@@ -42,7 +45,10 @@ class authController extends CI_Controller
 					$info_user = $this->userModel->get_user_by_name($user_name);
 					if(empty($info_user) && $info_user['use_password'] !== md5($password.$info_user['use_salt'])) return FALSE;
 					else {
-						$_SESSION['use_login'] = TRUE;
+						$_SESSION['login'] = TRUE;
+						$_SESSION['use_id'] = $info_user['use_id'];
+						$_SESSION['use_fullname'] = $info_user['use_fullname'];
+						$_SESSION['use_avatar'] = $info_user['use_avatar'];
 						$remember_me = $this->input->post('remember_me');
 						if(!empty($remember_me)) {
 							set_cookie('use_avatar',$info_user['use_avatar'],3600);
@@ -53,6 +59,8 @@ class authController extends CI_Controller
 							delete_cookie('use_name');
 							delete_cookie('use_password');
 						}
+						set_message('Xin chào bạn '.$info_user['use_fullname'],'SUCCESS');
+						redirect(base_url('/'));
 					}
 				}
 				]],['check_isset_user'=> 'Tài khoản hoặc mật khẩu không đúng']
@@ -62,9 +70,12 @@ class authController extends CI_Controller
 
 		$helper = $this->fb->FB->getRedirectLoginHelper();
 		$permissions = $this->config->item('permissions');
-		$redirect_url = 'http://folder.info/CI_vote_fb/login/fb';
+		$redirect_url = base_url('/login/fb');
 		$login_url = $helper->getLoginUrl($redirect_url, $permissions);
-		$this->load->view('login',['url_login_fb'=> $login_url]);
+		$this->load->view('layout/auth',[
+			'url_login_fb'	=> $login_url,
+			'sub_view'		=> 'login'
+		]);	
 	}
 
 	function handleLoginFb() {
@@ -112,18 +123,19 @@ class authController extends CI_Controller
 		$avatar_fb 	= $result['picture']['url'];
 		$info_user = $this->userModel->get_user_by_id_fb($id_fb);
 		if(empty($info_user)) $user_id = $this->userModel->created_user_login_fb($id_fb, $fullname, $avatar_fb);
-		else $user_id = $info_user['use_id']; 
-		$_SESSION['use_login'] = TRUE;
+		else {
+			$user_id = $info_user['use_id'];
+			$fullname = $info_user['use_fullname'];
+		} 
+		$_SESSION['login'] = TRUE;
 		$_SESSION['use_id'] = $user_id;
+		$_SESSION['use_fullname'] = $fullname;
+		$_SESSION['use_avatar'] = $info_user['use_avatar'];
 		redirect(base_url('/'));
 	}
 
 	function showFormRegistration() {
-		$this->load->view('registration');
-	}
-
-	function test() {
-		$this->load->view('layout/main',['sub_view'=>'home']);
+		$this->load->view('layout/auth',['sub_view'=>'registration']);	
 	}
 
 	function handleFormRegistration() {
@@ -167,6 +179,6 @@ class authController extends CI_Controller
 			$fullname = $this->input->post('fullname');
 			$this->userModel->created_user($user_name, $fullname, $password);
 		} 
-		$this->load->view('registration');
+		$this->load->view('layout/auth',['sub_view'=>'registration']);	
 	}
 }

@@ -6,16 +6,25 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //Auth route
-$route['login']['GET'] = 'authController/showFormLogin';
-$route['login']['POST'] = 'authController/handleFormLogin';
-$route['login/fb'] = 'authController/handleLoginFb';
-$route['registration']['GET'] = 'authController/showFormRegistration';
-$route['registration']['POST'] = 'authController/handleFormRegistration';
+$route['login']['GET'] 			= 'AuthController/showFormLogin';
+$route['login']['POST'] 		= 'AuthController/handleFormLogin';
+$route['login/fb'] 				= 'AuthController/handleLoginFb';
+$route['registration']['GET'] 	= 'AuthController/showFormRegistration';
+$route['registration']['POST'] 	= 'AuthController/handleFormRegistration';
 
 //User route
-$route['user/info']['GET'] = 'userController/info';
-$route['user/updated']['POST'] = 'userController/updated';
-$route['home']['GET'] = 'userController/home';
-$route['user/upload-avatar']['POST'] = 'userController/uploadAvatar';
+$route['user/info']['GET'] 				= 'UserController/info';
+$route['user/info']['POST'] 			= 'UserController/updated';
+$route['user/upload-avatar']['POST'] 	= 'UserController/uploadAvatar';
 
+//Work route
+$route['work'] 									= 'WorkController/index';
+$route['work/add/(:num)-(:num)-(:num)']['GET'] 	= 'WorkController/showFormAdd/$1/$2/$3';
+$route['work/add/(:num)-(:num)-(:num)']['POST'] = 'WorkController/handleFormAdd/$1/$2/$3';
+$route['work/edit/(:num)']['GET'] 				= 'WorkController/showFormEdit/$1';
+$route['work/edit/(:num)']['POST'] 				= 'WorkController/handleFormEdit/$1';
+$route['work/delete/(:num)']['GET'] 			= 'WorkController/deleteWork/$1';
+$route['work/option/(:any)/(:num)']['GET'] 		= 'WorkController/optionAct/$1/$2';
 
+//Finance route
+$route['finance'] = 'FinanceController/index';

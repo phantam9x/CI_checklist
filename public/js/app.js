@@ -30,16 +30,6 @@
             }
         }
     });
-    //Selection page
-
-    $('#wp-content #tab.panel-heading .btn').click(function() {
-        var page = $(this).attr('href');
-        $('#wp-content #tab.panel-heading .btn').removeClass('active');
-        $('#wp-content .page').removeClass('active');
-        $(page).addClass('active');
-        $(this).addClass('active');
-        return false;
-    })
 
     $('#fake-file-button-browse').click(function() {
         $('#files-input-upload').click();
@@ -56,6 +46,33 @@
         })
     })
 
+$('.calendar-month-header .month-back,.calendar-month-header .month-next').click(function(event) {
+    var month = parseInt($("input[name='month']").val());
+    var year = parseInt($("input[name='year']").val());
+    var base_url = $("input[name='base_url']").val();
+    if($(this).hasClass('month-back')) {
+        month -= 1;
+        if(month <= 0) {
+            month = 12;
+            year -= 1;
+        }
+    } else {
+        month += 1;
+        if(month >= 13) {
+            month = 1;
+            year += 1;
+        }
+    }
+    var path = base_url+'/work/?m='+month+'&y='+year;
+    window.location.href = path;
+})
+
+$('.wp-message-session .close-message').click(function() {
+    $(this).parents('.wp-message-session').remove();
+})
+setTimeout(function(){
+    $('.wp-message-session').remove();
+}, 6000);
 // Xử lý ảnh và upload
 $('#wp-content .avatar #fake-file-button-upload').on('click', function() {
     // Gán giá trị của nút chọn tệp vào var img_file

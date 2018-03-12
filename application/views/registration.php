@@ -1,18 +1,4 @@
-<!Doctype html>
-<html>
-	<head>
-		<link href="<?=base_url() ?>/public/css/reset.css" rel="stylesheet">
-		<link href="<?=base_url() ?>/public/css/font-awesome/css/font-awesome.css" rel="stylesheet">
-		<link href="<?=base_url() ?>/public/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-		<link href="<?=base_url() ?>/public/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
-		<link href="<?=base_url() ?>/public/css/bootstrap/bootstrap-social.css" rel="stylesheet">
-		<link href="<?=base_url() ?>/public/css/style.css" rel="stylesheet">
-		
-		<script src="<?=base_url() ?>/public/js/jquery-3.2.1.min.js"></script>
-		<script src="<?=base_url() ?>/public/js/bootstrap/bootstrap.min.js"></script>
-		<script src="<?=base_url() ?>/public/js/app.js"></script>
-	</head>
-	<body>
+	<div id="page-login">
 		<div class="container">
 	        <div class="card card-container">
 	            <form class="form-signin" method="POST">
@@ -30,6 +16,5 @@
 	            <a href="<?=base_url('/login') ?>" class="forgot-password"> Trở lại đăng nhập </a>
 	        </div>
 	    </div>
-	</body>
-</html>
+	</div>
 

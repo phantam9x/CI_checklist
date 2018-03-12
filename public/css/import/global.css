@@ -38,7 +38,7 @@ button{ margin: 0; padding: 0;}
 #wrapper.hide-menu #sidebar #sidebar-menu .nav-item:hover .sub-menu{  display: block!important;  position: absolute; background: #364150;  left: 52px; width: 170px;}
 #sidebar-menu > .nav-item.active > .nav-link{ background: #2c3542;}
 #sidebar-menu li:hover > a{ background: #2c3542}
-.row{margin-top:40px;padding: 0 10px;}
+.row{margin-top:40px;padding: 0 10px;margin-right: 0;margin-left: 0;}
 .clickable{
 		    cursor: pointer;   
 		}
@@ -51,28 +51,83 @@ button{ margin: 0; padding: 0;}
 			margin-left:5px;
 		}
 #wp-content{
-	padding-top: 75px;
+	padding-top: 30px;
 	
 }
 #wrapper.show-menu #wp-content{
-	padding-left: 190px;
+	padding-left: 200px;
+}
+#wrapper #wp-content{
+	padding-left: 55px;
 }
 .pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
 .panel.panel-primary{margin-bottom: 0}
-.btn-group.panel-heading .btn.active{background: #1f7a8d;position: relative;}
-.btn-group.panel-heading .btn.active::before{
-    content: '';
-    width: 0;
-    height: 0;
-    bottom: -20px;
-    right: 10px;
-    position: absolute;
-    border: 10px solid transparent;
-    border-top: 10px solid #1f7a8d;
-}
-.btn-group.panel-heading .btn:hover{
-	text-decoration: underline !important;
-}
 #wp-content .page{display: none;}
 #wp-content .page.active{display: block;}
 .text-error{color: #a94442 !important;}
+.wp-message-session{
+	position: absolute;
+    right: 100px;
+    top: 40px;
+    font-size: 16px;
+    z-index: 10000;
+}
+.wp-message-session .message{
+	padding: 15px;
+	border-radius: 5px;
+}
+.wp-message-session .close-message{
+	position: absolute;
+    top: -22px;
+    right: -6px;
+    border-radius: 10px;
+    color: #a80e0e;
+    padding: 0px 2px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.wp-option{
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+}
+.wp-option:hover .option,
+.wp-option:hover .content-hide{
+	display: block;
+}
+.wp-option .option{
+    position: absolute;
+    z-index: 999;
+    background: white;
+    border: 1px solid #c1c1c1;
+    min-width: 100px;
+    right: -5px;
+    top: -72px;
+    text-align: left;
+    display: none;
+    border-radius: 5px;
+}
+.wp-option .option a{
+    display: block;
+    color: #3e3e3e;
+    line-height: 24px;
+    padding: 5px;
+}
+.wp-option .option a:hover{
+	background-color: #e8e8e8;
+}
+.wp-option .content-hide{
+	position: absolute;
+    background: white;
+    min-width: 300px;
+    right: 15px;
+    top: 4px;
+    color: #4d4d4d;
+    padding: 8px;
+    border-radius: 5px;
+    border: solid 1px #a3a3a3;
+    display: none;
+    line-height: 22px;
+    text-align: left;
+    white-space: pre-line;
+}
