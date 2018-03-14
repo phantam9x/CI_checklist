@@ -1,12 +1,9 @@
 #page-login {
     height: 100%;
-    background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
 }
 
 #page-login .card-container.card {
     max-width: 350px;
-    padding: 25px;
 }
 
 #page-login .btn {

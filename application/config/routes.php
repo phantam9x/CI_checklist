@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'WorkController/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -27,4 +27,13 @@ $route['work/delete/(:num)']['GET'] 			= 'WorkController/deleteWork/$1';
 $route['work/option/(:any)/(:num)']['GET'] 		= 'WorkController/optionAct/$1/$2';
 
 //Finance route
-$route['finance'] = 'FinanceController/index';
+$route['income/add']['GET'] = 'finance/IncomeController/showFormAdd';
+$route['income/add']['POST'] = 'finance/IncomeController/handleFormAdd';
+$route['income/delete/(:num)']['GET'] = 'finance/IncomeController/delete/$1';
+$route['income/edit/(:num)']['GET'] = 'finance/IncomeController/showFormEdit/$1';
+$route['income/edit/(:num)']['POST'] = 'finance/IncomeController/handleFormEdit/$1';
+
+$route['fund/add']['GET'] = 'finance/FundController/showFormAdd';
+$route['fund/add']['POST'] = 'finance/FundController/handleFormAdd';
+$route['income/delete/(:num)']['GET'] = 'finance/FundController/delete/$1';
+

@@ -9,7 +9,7 @@ $autoload['drivers'] = array();
 
 $autoload['helper'] = array('url','data','form','message','user');
 
-$autoload['config'] = array('facebook');
+$autoload['config'] = array('facebook','list_option');
 
 $autoload['language'] = array();
 

@@ -8,8 +8,11 @@
         </style>
     </head>
     <body  cz-shortcut-listen="true">
-        <? $this->load->view("templates/message") ?>
-        <? $this->load->view($sub_view) ?>
+        <div id="wrapper">
+            <? $this->load->view("templates/message") ?>
+            <? $this->load->view($sub_view) ?>
+        </div>
+        
         <link href="<?=base_url() ?>/public/css/reset.css" rel="stylesheet">
         <link href="<?=base_url() ?>/public/css/font-awesome/css/font-awesome.css" rel="stylesheet">
         <!-- Latest compiled and minified CSS -->

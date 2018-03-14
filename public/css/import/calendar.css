@@ -2,6 +2,9 @@
  * Zabuto Calendar
  */
 
+div.zabuto_calendar .table tr td a.day{
+    text-decoration: unset;
+}
 div.zabuto_calendar {
     margin: 0;
     padding: 0;

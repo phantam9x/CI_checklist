@@ -1,4 +1,4 @@
-<div id="wp-content">
+<div class="container">
    <div class="row" style="margin-right: 0;margin-left: 0">
       <div class="col-md-12 ">
          <div class="panel panel-primary">

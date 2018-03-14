@@ -1,12 +1,11 @@
-		<div id="page-login">
-			<div class="container">
+			<div id="page-login" class="container">
 		        <div class="card card-container">
 		            <img id="profile-img" class="profile-img-card" src="<?=base_url(); echo $_COOKIE['use_avatar'] ?? '/public/images/user.png' ?>" />
 		            <form class="form-signin" method="POST">
 		            	<a href="<?=$url_login_fb ?>" class="btn btn-block btn-social btn-facebook">
 	            			<span class="fa fa-facebook"></span> Đăng nhập bằng Facebook
 	          			</a>
-	          			<span id="title"> Đăng nhập bằng tài khoản </span>
+	          			<span id="title"></span>
 	          			 <?=form_error('login') ?>
 		                <input type="text" id="inputEmail" class="form-control" value="<?=empty(set_value('user_name'))?get_cookie('use_name'):set_value('user_name') ?>" name="user_name" placeholder="Tên đăng nhập" required autofocus>
 		                <?=form_error('user_name') ?>
@@ -29,4 +28,3 @@
 		        </div><!-- /card-container -->
 		    </div>
 		    <!-- /container -->
-		</div>
