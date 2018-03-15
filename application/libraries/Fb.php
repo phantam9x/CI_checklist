@@ -1,5 +1,7 @@
 <?php 
-	defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require APPPATH .'/../vendor/autoload.php';
 
 	class Fb {
 
@@ -16,16 +18,16 @@
 			]);
 		}
 
-		function set_fields(array $fields) {
+		function set_fields($fields) {
 			$this->fields = implode(',', $fields);
 			return $this;
 		}
 
 		function get_token() {
-			return $_SESSION['fb_access_token'] ?? null;
+			return empty($_SESSION['fb_access_token']) ? null : $_SESSION['fb_access_token'];
 		}
 
-		function set_token(string $token) {
+		function set_token( $token) {
 			$_SESSION['fb_access_token'] = $token;
 		}
 

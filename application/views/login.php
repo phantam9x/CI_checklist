@@ -1,6 +1,6 @@
 			<div id="page-login" class="container">
 		        <div class="card card-container">
-		            <img id="profile-img" class="profile-img-card" src="<?=base_url(); echo $_COOKIE['use_avatar'] ?? '/public/images/user.png' ?>" />
+		            <img id="profile-img" class="profile-img-card" src="<?=base_url(); echo empty($_COOKIE['use_avatar']) ? '/public/images/user.png' : $_COOKIE['use_avatar']?>" />
 		            <form class="form-signin" method="POST">
 		            	<a href="<?=$url_login_fb ?>" class="btn btn-block btn-social btn-facebook">
 	            			<span class="fa fa-facebook"></span> Đăng nhập bằng Facebook

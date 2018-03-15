@@ -1,7 +1,6 @@
 <?php 
-/**
-* 
-*/
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class WorkController extends CI_Controller {
 	
 	function __construct() {
@@ -10,9 +9,13 @@ class WorkController extends CI_Controller {
 	}
 
 	function index() {
-		$month 		= $this->input->get('m') ?? (int)date('m', time());
-		$year 		= $this->input->get('y') ?? (int)date('Y', time());
-		$today 		= $this->input->get('d') ?? (int)date('d', time());
+	    $month      =  $this->input->get('m');
+	    $year 		= $this->input->get('y');
+	    $today 		= $this->input->get('d');
+		$month 		=  empty($month) ? (int)date('m', time()) : (int)$month;
+		$year 		=  empty($year) ? (int)date('Y', time()) : (int)$year;
+		$today 		=  empty($today) ? (int)date('d', time()) : (int)$today;
+
 		checkdate($month, $today, $year)|| redirect(base_url('/work'));
 		$work_time  = $this->workModel->get_time_work_by_date($today, $month, $year);
 		$list_work 	= $this->workModel->get_all_work_by_date($work_time, $month, $year);
@@ -21,7 +24,8 @@ class WorkController extends CI_Controller {
 			'month' 	=> $month,
 			'year'  	=> $year,
 			'list_work' => $list_work,
-			'today'     => $today
+			'today'     => $today,
+			'title'     => 'Danh sách công việc'
 		]);
 	}
 	function showFormAdd($d,$m,$y) {
@@ -31,6 +35,7 @@ class WorkController extends CI_Controller {
 			'day' =>$d,
 			'mont' =>$m,
 			'year' =>$y,
+			'title'     => 'Thêm mới công việc',
 			'list_work'=> $this->workModel->get_all_work_by_date($this->workModel->get_time_work_by_date($d,$m,$y))
 		]);
 	}
@@ -57,6 +62,7 @@ class WorkController extends CI_Controller {
 			'day' =>$d,
 			'mont' =>$m,
 			'year' =>$y,
+			'title'     => 'Thêm mới công việc',
 			'list_work'=> $this->workModel->get_all_work_by_date($this->workModel->get_time_work_by_date($d,$m,$y))
 		]);
 	}
@@ -74,7 +80,8 @@ class WorkController extends CI_Controller {
 		];
 		$this->form_validation->run();
 		$this->load->view('layout/main',[
-			'sub_view'=>'work/edit'
+			'sub_view'=>'work/edit',
+			'title'     => 'Chỉnh sửa công việc'
 		]);		
 	}
 
@@ -97,7 +104,8 @@ class WorkController extends CI_Controller {
 			redirect(base_url('/work'));
 		} else $this->form_validation->set_error_delimiters('<p class="help-block"><span class="text-danger">','</span></p>');
 		$this->load->view('layout/main',[
-			'sub_view'=>'work/edit'
+			'sub_view'=>'work/edit',
+			'title'     => 'Chỉnh sửa công việc'
 		]);
 	}
 
