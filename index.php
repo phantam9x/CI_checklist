@@ -3,6 +3,8 @@ session_start();
 
 define('ENVIRONMENT','development');
 
+require __DIR__ .'/vendor/autoload.php';
+
 switch (ENVIRONMENT)
 {
 	case 'development':

@@ -1,8 +1,6 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH .'/../vendor/autoload.php';
-
 	class Fb {
 
 		public $FB;

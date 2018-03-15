@@ -13,7 +13,7 @@ body{
  }
 body>#wrapper{
     background: transparent 
-                url(http://folder.info/CI_vote_fb/public/images/unnamed.png) 
+                url(../../../public/images/unnamed.png) 
                 repeat-x 
                 scroll 
                 top 
